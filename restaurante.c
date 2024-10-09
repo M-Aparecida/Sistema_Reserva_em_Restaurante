@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "restaurante.h"
+#include "reserva.c"
 
 struct restaurante{
     char localizacao[100];

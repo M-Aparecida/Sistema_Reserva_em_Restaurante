@@ -35,7 +35,6 @@ int main() {
                 int numero_mesa;
                 float consumo;
 
-                // Entrada de dados
                 printf("Nome do responsavel (somente letras): ");
                 scanf("%99[^\n]", nome);
                 limpar_buffer();
