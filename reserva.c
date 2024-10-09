@@ -4,7 +4,7 @@
 #include "reserva.h"
 #include "restaurante.h"
 
-struct reserva{
+struct reserva {
     char nome_responsavel[100];
     char horario_inicio[6];
     char horario_saida[6];
@@ -33,14 +33,14 @@ int validar_nome(char* nome) {
     return 1;
 }
 
-// Função para validar um horário no formato HH:MM usando tabela ASCII
+// Função para validar um horário no formato HH:MM 
 int validar_horario(char* horario) {
-    // Verifica se o formato é exatamente HH:MM (5 caracteres) e se tem ':'
+    // Verifica se o formato é exatamente HH:MM e se tem ':'
     if (strlen(horario) != 5 || horario[2] != ':') {
         return 0;
     }
 
-    // Verifica se cada caractere está dentro dos limites ASCII de dígitos
+    // Verifica se cada caractere está dentro dos limites de dígitos
     if (!(horario[0] >= '0' && horario[0] <= '2') || 
         !(horario[1] >= '0' && horario[1] <= '9') ||
         !(horario[3] >= '0' && horario[3] <= '5') || 
@@ -60,7 +60,7 @@ int validar_horario(char* horario) {
     return 1;
 }
 
-// Função para validar os horários de início e saída
+// Função para validar os horários de inicio e saída
 int validar_horarios(char* horario_inicio, char* horario_saida) {
     if (!validar_horario(horario_inicio) || !validar_horario(horario_saida)) {
         return 0;
@@ -95,14 +95,12 @@ int validar_numero_mesa(Restaurante* restaurante, int numero_mesa, char* horario
             sscanf(restaurante->reservas[i]->horario_inicio, "%d:%d", &hora_inicio_existente, &minuto_inicio_existente);
             sscanf(restaurante->reservas[i]->horario_saida, "%d:%d", &hora_saida_existente, &minuto_saida_existente);
 
-            // Verifica se os horários conflitariam
-            if ((hora_inicio >= hora_inicio_existente && hora_inicio < hora_saida_existente) ||
-                (hora_saida > hora_inicio_existente && hora_saida <= hora_saida_existente) ||
-                (hora_inicio_existente >= hora_inicio && hora_inicio_existente < hora_saida) ||
-                (hora_saida_existente > hora_inicio && hora_saida_existente <= hora_saida)) {
-                return 0;  // Conflito de horário
+            
+            // A nova reserva não pode começar após o horário de saída da reserva existente
+            //  não pode terminar antes do horário de início da reserva existente
+            if (!(hora_saida < hora_inicio_existente || (hora_saida == hora_inicio_existente && minuto_saida <= minuto_inicio_existente) || hora_inicio > hora_saida_existente || (hora_inicio == hora_saida_existente && minuto_inicio >= minuto_saida_existente))) {
+                return 0;  
             }
         }
     }
-    return 1;  // Sem conflito
-}
+    return 1;  

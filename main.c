@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "restaurante.h"
 #include "reserva.h"
+#include "restaurante.h"
 
 void menu() {
     printf("1. Adicionar reserva\n");
@@ -11,7 +11,7 @@ void menu() {
     printf("5. Editar cadastro de reserva\n");
     printf("6. Consultar reserva para um cliente\n");
     printf("7. Sair\n");
-    printf("Digite uma opção: ");
+    printf("Digite uma opcao: ");
 }
 
 void limpar_buffer() {
@@ -36,19 +36,19 @@ int main() {
                 float consumo;
 
                 // Entrada de dados
-                printf("Nome do responsável (somente letras): ");
+                printf("Nome do responsavel (somente letras): ");
                 scanf("%99[^\n]", nome);
                 limpar_buffer();
 
-                printf("Horário de início (HH:MM): ");
+                printf("Horario de inicio (HH:MM): ");
                 scanf("%5s", horario_inicio);
                 limpar_buffer();
 
-                printf("Horário de saída (HH:MM): ");
+                printf("Horario de saida (HH:MM): ");
                 scanf("%5s", horario_saida);
                 limpar_buffer();
 
-                printf("Número da mesa: ");
+                printf("Numero da mesa: ");
                 scanf("%d", &numero_mesa);
                 limpar_buffer();
 
@@ -56,28 +56,28 @@ int main() {
                 scanf("%f", &consumo);
                 limpar_buffer();
 
-                // Validação de entradas
+                
                 if (validar_nome(nome) && validar_horarios(horario_inicio, horario_saida) && 
                     validar_consumo(consumo) && validar_numero_mesa(restaurante, numero_mesa, horario_inicio, horario_saida)) {
                     Reserva* reserva = criar_reserva(nome, horario_inicio, horario_saida, numero_mesa, consumo);
                     adicionar_reserva(restaurante, reserva);
                     printf("Reserva adicionada com sucesso!\n");
                 } else {
-                    printf("Erro: Dados inválidos para a reserva.\n");
+                    printf("Erro: Dados invalidos para a reserva.\n");
                 }
                 break;
             }
 
             case 2: {
                 int numero_mesa;
-                printf("Número da mesa da reserva a ser excluída: ");
+                printf("Numero da mesa da reserva a ser excluida: ");
                 scanf("%d", &numero_mesa);
                 limpar_buffer();
 
-                if (excluir_reserva(restaurante, numero_mesa)) {
-                    printf("Reserva excluída com sucesso!\n");
+                if (excluir_reserva(restaurante, numero_mesa) == 0) {
+                    printf("Reserva excluida com sucesso!\n");
                 } else {
-                    printf("Erro: Reserva não encontrada.\n");
+                    printf("Erro: Reserva nao encontrada.\n");
                 }
                 break;
             }
@@ -88,24 +88,24 @@ int main() {
 
             case 4: {
                 int numero_mesa;
-                printf("Número da mesa da reserva a ser buscada: ");
+                printf("Numero da mesa da reserva a ser buscada: ");
                 scanf("%d", &numero_mesa);
                 limpar_buffer();
 
                 Reserva* reserva = buscar_reserva(restaurante, numero_mesa);
                 if (reserva != NULL) {
-                    printf("Nome: %s, Início: %s, Saída: %s, Mesa: %d, Consumo: %.2f\n",
+                    printf("Nome: %s, Inicio: %s, Saida: %s, Mesa: %d, Consumo: %.2f\n",
                            reserva->nome_responsavel, reserva->horario_inicio, reserva->horario_saida,
                            reserva->numero_mesa, reserva->consumo);
                 } else {
-                    printf("Reserva não encontrada.\n");
+                    printf("Reserva nao encontrada.\n");
                 }
                 break;
             }
 
             case 5: {
                 int numero_mesa;
-                printf("Número da mesa da reserva a ser editada: ");
+                printf("Numero da mesa da reserva a ser editada: ");
                 scanf("%d", &numero_mesa);
                 limpar_buffer();
 
@@ -113,19 +113,19 @@ int main() {
                 int novo_numero_mesa;
                 float consumo;
 
-                printf("Novo nome do responsável (somente letras): ");
+                printf("Novo nome do responsavel (somente letras): ");
                 scanf("%99[^\n]", novo_nome);
                 limpar_buffer();
 
-                printf("Novo horário de início (HH:MM): ");
+                printf("Novo horario de inicio (HH:MM): ");
                 scanf("%5s", horario_inicio);
                 limpar_buffer();
 
-                printf("Novo horário de saída (HH:MM): ");
+                printf("Novo horario de saida (HH:MM): ");
                 scanf("%5s", horario_saida);
                 limpar_buffer();
 
-                printf("Novo número da mesa: ");
+                printf("Novo numero da mesa: ");
                 scanf("%d", &novo_numero_mesa);
                 limpar_buffer();
 
@@ -139,14 +139,14 @@ int main() {
                     editar_reserva(restaurante, numero_mesa, nova_reserva);
                     printf("Reserva editada com sucesso!\n");
                 } else {
-                    printf("Erro: Dados inválidos para a reserva.\n");
+                    printf("Erro: Dados invalidos para a reserva.\n");
                 }
                 break;
             }
 
             case 6: {
                 int numero_mesa;
-                printf("Número da mesa da reserva a ser consultada: ");
+                printf("Numero da mesa da reserva a ser consultada: ");
                 scanf("%d", &numero_mesa);
                 limpar_buffer();
                 consultar_reserva(restaurante, numero_mesa);
@@ -159,7 +159,7 @@ int main() {
                 break;
 
             default:
-                printf("Opção inválida!\n");
+                printf("Opcao invalida!\n");
         }
     } while (opcao != 7);
 
