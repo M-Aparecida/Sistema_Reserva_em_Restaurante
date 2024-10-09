@@ -23,7 +23,24 @@ int validar_nome(char* nome) {
     return 1;
 }
 
+int validar_horario(char* horario) {
+    if (strlen(horario) != 5 || horario[2] != ':') {
+        return 0;
+    }
+    if (!(horario[0] >= '0' && horario[0] <= '2') || !(horario[1] >= '0' && horario[1] <= '9') ||
+        !(horario[3] >= '0' && horario[3] <= '5') || !(horario[4] >= '0' && horario[4] <= '9')) {
+        return 0;
+    }
+    if (horario[0] == '2' && horario[1] > '3') {
+        return 0;
+    }
+    return 1;
+}
+
 int validar_horarios(char* horario_inicio, char* horario_saida) {
+    if (!validar_horario(horario_inicio) || !validar_horario(horario_saida)) {
+        return 0;
+    }
     int hora_inicio, minuto_inicio, hora_saida, minuto_saida;
     sscanf(horario_inicio, "%d:%d", &hora_inicio, &minuto_inicio);
     sscanf(horario_saida, "%d:%d", &hora_saida, &minuto_saida);

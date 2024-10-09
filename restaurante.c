@@ -84,6 +84,7 @@ void consultar_reserva(Restaurante* restaurante, int numero_mesa) {
 void carregar_dados(Restaurante* restaurante, char* arquivo) {
     FILE* file = fopen(arquivo, "r");
     if (file == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
         return;
     }
     while (!feof(file)) {
