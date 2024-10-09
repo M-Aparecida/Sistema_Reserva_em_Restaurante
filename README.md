@@ -1,20 +1,14 @@
 # Sistema de Reserva em Restaurante
 
 ## Sumário:
+- Utilidade
+- Funcionalidades
+- Desenvolvedor
 
+## Utilidade
+Tem como principal utilidade a automação do processo de gerenciamento de reservas, tornando mais fácil para o restaurante controlar a ocupação das mesas, evitar conflitos de horários e gerenciar os dados dos clientes e suas preferências de forma eficiente. Através do sistema, o restaurante pode adicionar, remover e consultar reservas, bem como verificar o consumo dos clientes, mantendo os dados em um arquivo de texto.
 
-
-### Utilidade
-#
-
-
-### Problematica
-#
-
-
-
-### Funcionalidades: 
-#
+## Funcionalidades: 
 
 | Menu               | 
 | ----------------- | 
@@ -28,6 +22,5 @@
 
 
 
-### Desenvolverores 
-#
+## Desenvolvedor 
 Maria Aparecida
