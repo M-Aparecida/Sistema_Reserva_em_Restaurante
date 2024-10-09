@@ -2,7 +2,6 @@
 
 ## Sumário:
 - Utilidade
-- Problemática
 - Funcionalidades
 - Desenvolvedor
 
