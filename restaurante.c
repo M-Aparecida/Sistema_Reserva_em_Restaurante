@@ -3,6 +3,15 @@
 #include <string.h>
 #include "restaurante.h"
 
+struct restaurante{
+    char localizacao[100];
+    char horario_abertura[6];
+    char horario_fechamento[6];
+    int total_mesas;
+    int total_reservas;
+    Reserva** reservas;
+};
+
 Restaurante* criar_restaurante(char* localizacao, char* horario_abertura, char* horario_fechamento, int total_mesas) {
     Restaurante* restaurante = (Restaurante*) malloc(sizeof(Restaurante));
     strcpy(restaurante->localizacao, localizacao);

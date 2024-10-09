@@ -3,14 +3,7 @@
 
 #include "reserva.h"
 
-typedef struct {
-    char localizacao[100];
-    char horario_abertura[6];
-    char horario_fechamento[6];
-    int total_mesas;
-    int total_reservas;
-    Reserva** reservas;
-} Restaurante;
+typedef struct restaurante Restaurante;
 
 Restaurante* criar_restaurante(char* localizacao, char* horario_abertura, char* horario_fechamento, int total_mesas);
 void adicionar_reserva(Restaurante* restaurante, Reserva* reserva);
