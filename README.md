@@ -3,6 +3,7 @@
 ## Sumário:
 - Utilidade
 - Funcionalidades
+- Execução
 - Desenvolvedor
 
 ## Utilidade
@@ -20,13 +21,13 @@ Tem como principal utilidade a automação do processo de gerenciamento de reser
 | [6] - Consultar reserva para um cliente
 | [7] - Sair
 
-2º Execução:
+## Execução:
 Primeiro clone o repositório na sua máquina, com o seguinte comando:
 ```
 git clone https://github.com/M-Aparecida/Sistema_Reserva_em_Restaurante.git
 
 ```
-Em seguida em seu terminal, use o comando:
+No seu terminal, use o comando:
 ```
 gcc -o main.exe .\src\reserva.c .\src\restaurante.c .\src\main.c
 
