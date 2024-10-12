@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "include/restaurante.h"
-#include "include/reserva.h"
+#include "../include/restaurante.h"
+#include "../include/reserva.h"
 
 void menu() {
     printf("1. Adicionar reserva\n");

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "include/restaurante.h"
+#include <string.h>
+#include "../include/restaurante.h"
 
 Restaurante* criar_restaurante(char* localizacao, char* horario_abertura, char* horario_fechamento, int total_mesas) {
     Restaurante* restaurante = (Restaurante*) malloc(sizeof(Restaurante));

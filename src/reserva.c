@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "include/reserva.h"
-#include "include/restaurante.h" 
+#include "../include/reserva.h"
+#include "../include/restaurante.h" 
 
 Reserva* criar_reserva(char* nome_responsavel, char* horario_inicio, char* horario_saida, int numero_mesa, float consumo) {
     Reserva* reserva = (Reserva*) malloc(sizeof(Reserva));
