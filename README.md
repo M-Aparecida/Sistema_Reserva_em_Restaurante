@@ -3,6 +3,8 @@
 ## Sumário:
 - Utilidade
 - Funcionalidades
+- Organização do repositório
+- Tecnologia utilizada
 - Execução
 - Desenvolvedor
 
@@ -21,6 +23,36 @@ Tem como principal utilidade a automação do processo de gerenciamento de reser
 | [6] - Consultar reserva para um cliente
 | [7] - Sair
 
+## Organização do repositório
+```
+📁 - Sistema_Reserva_em_Restaurante
+
+
+|
+└─── data
+│
+└─── include
+        │
+        ├──reserva.h
+        ├──restaurante.h    
+│
+└─── src
+        │
+        ├──main.c
+        ├──reserva.c
+        ├──restaurante.c
+│
+└───test
+│
+└───README.md
+```
+
+## Tecnologia utilizada
+___
+
+![c](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
+
+
 ## Execução:
 Primeiro clone o repositório na sua máquina, com o seguinte comando:
 ```
@@ -33,7 +65,6 @@ gcc -o main.exe .\src\reserva.c .\src\restaurante.c .\src\main.c
 
 ```
 - Para Windows execute com `./main` e para Linux `./main.exe`
-
 
 ## Desenvolvedor 
 Maria Aparecida
