@@ -67,5 +67,5 @@ gcc -o main.exe .\src\reserva.c .\src\restaurante.c .\src\main.c
 - Para Windows execute com `./main` e para Linux `./main.exe`
 
 ## Desenvolvedor 
-Maria Aparecida
-
+[<img loading="lazy" src="https://drive.google.com/uc?export=view&id=1PiHMPgM6Zrdjs_JgeOqliy_ziwtKM9Xf" width=115><br><sub>Maria Aparecida</sub>](https://github.com/M-Aparecida) 
+:------------------------------------------------------------------------------------------------------------------------------------------------------------------: 
