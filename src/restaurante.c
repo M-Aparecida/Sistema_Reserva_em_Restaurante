@@ -1,17 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include "restaurante.h"
-#include "reserva.c"
-
-struct restaurante{
-    char localizacao[100];
-    char horario_abertura[6];
-    char horario_fechamento[6];
-    int total_mesas;
-    int total_reservas;
-    Reserva** reservas;
-};
+#include "include/restaurante.h"
 
 Restaurante* criar_restaurante(char* localizacao, char* horario_abertura, char* horario_fechamento, int total_mesas) {
     Restaurante* restaurante = (Restaurante*) malloc(sizeof(Restaurante));
@@ -20,16 +9,13 @@ Restaurante* criar_restaurante(char* localizacao, char* horario_abertura, char* 
     strcpy(restaurante->horario_fechamento, horario_fechamento);
     restaurante->total_mesas = total_mesas;
     restaurante->total_reservas = 0;
-    restaurante->reservas = (Reserva*) malloc(total_mesas * sizeof(Reserva));
+    restaurante->reservas = (Reserva**) malloc(total_mesas * sizeof(Reserva*));
     return restaurante;
 }
 
 void adicionar_reserva(Restaurante* restaurante, Reserva* reserva) {
-    if (validar_horarios(reserva->horario_inicio, reserva->horario_saida) &&
-        validar_nome(reserva->nome_responsavel) &&
-        validar_consumo(reserva->consumo) &&
-        validar_numero_mesa(restaurante, reserva->numero_mesa, reserva->horario_inicio, reserva->horario_saida)) {
-        
+    if (validar_horarios(reserva->horario_inicio, reserva->horario_saida) && validar_nome(reserva->nome_responsavel) &&
+        validar_consumo(reserva->consumo) && validar_numero_mesa(restaurante, reserva->numero_mesa, reserva->horario_inicio, reserva->horario_saida)) {
         restaurante->reservas[restaurante->total_reservas] = reserva;
         restaurante->total_reservas++;
     } else {
@@ -37,8 +23,7 @@ void adicionar_reserva(Restaurante* restaurante, Reserva* reserva) {
     }
 }
 
-
-int excluir_reserva(Restaurante* restaurante, int numero_mesa) {
+void excluir_reserva(Restaurante* restaurante, int numero_mesa) {
     for (int i = 0; i < restaurante->total_reservas; i++) {
         if (restaurante->reservas[i]->numero_mesa == numero_mesa) {
             free(restaurante->reservas[i]);
@@ -46,18 +31,17 @@ int excluir_reserva(Restaurante* restaurante, int numero_mesa) {
                 restaurante->reservas[j] = restaurante->reservas[j + 1];
             }
             restaurante->total_reservas--;
-            printf("Reserva excluída.\n");
-            return 0;
+            printf("Reserva excluida.\n");
+            return;
         }
     }
     printf("Reserva nao encontrada.\n");
-    return 1;
 }
 
 void listar_reservas(Restaurante* restaurante) {
     for (int i = 0; i < restaurante->total_reservas; i++) {
         Reserva* reserva = restaurante->reservas[i];
-        printf("Nome: %s, Inicio: %s, Saida: %s, Mesa: %d, Consumo: %.2f\n",
+        printf("Nome: %s \nInicio: %s \nSaida: %s \nMesa: %d, \nConsumo: %.2f\n",
                reserva->nome_responsavel, reserva->horario_inicio, reserva->horario_saida,
                reserva->numero_mesa, reserva->consumo);
     }
@@ -88,11 +72,11 @@ void editar_reserva(Restaurante* restaurante, int numero_mesa, Reserva* nova_res
 void consultar_reserva(Restaurante* restaurante, int numero_mesa) {
     Reserva* reserva = buscar_reserva(restaurante, numero_mesa);
     if (reserva != NULL) {
-        printf("Nome: %s, Inicio: %s, Saida: %s, Mesa: %d, Consumo: %.2f\n",
+        printf("Nome: %s \nInício: %s \nSaída: %s \nMesa: %d \nConsumo: %.2f\n",
                reserva->nome_responsavel, reserva->horario_inicio, reserva->horario_saida,
                reserva->numero_mesa, reserva->consumo);
     } else {
-        printf("Reserva nao encontrada.\n");
+        printf("Reserva não encontrada.\n");
     }
 }
 
